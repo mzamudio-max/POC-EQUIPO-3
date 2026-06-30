@@ -64,7 +64,8 @@
   .process-cta p { font-size: 0.85rem; color: var(--nexo-muted); margin-bottom: 1.25rem; }
 
   /* DIAGNÓSTICO — qué evaluamos */
-  .diag-section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .diag-section { padding: 6rem 4rem; }
+  .diag-inner { max-width: 1100px; margin: 0 auto; }
   .eval-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; margin-top: 0; }
   .eval-card { background: var(--nexo-soft); border: 0.5px solid rgba(196,184,232,0.12); border-radius: 14px; padding: 2rem; transition: border-color 0.2s; }
   .eval-card:hover { border-color: rgba(107,79,187,0.35); }
@@ -146,7 +147,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo"><img src="nexo_logo_transparente_blanco.png" alt="nexo" style="height:112px;"></div>
+  <div class="logo"><img src="nexo_logo_transparente_blanco.png" alt="nexo" style="height:72px;"></div>
   <ul>
     <li><a href="#proceso">Tu proceso</a></li>
     <li><a href="#diagnostico">Diagnóstico</a></li>
@@ -227,6 +228,7 @@
 
 <!-- EL DIAGNÓSTICO — QUÉ EVALUAMOS -->
 <div class="diag-section" id="diagnostico">
+  <div class="diag-inner">
   <div class="section-label">El diagnóstico</div>
   <h2 class="section-title">Cuatro dimensiones. Un resultado honesto.</h2>
   <p class="section-sub">Ninguna dimensión sola dice la verdad. La combinación de las cuatro sí.</p>
@@ -258,6 +260,8 @@
   </div>
   <div class="process-cta">
     <p>Cuatro dimensiones. Un solo resultado: el tuyo.</p>
+    <button class="btn-cta modal-trigger">Quiero ver mi diagnóstico →</button>
+  </div>
   </div>
 </div>
 
@@ -288,6 +292,10 @@
         <div class="level-label">Acción inmediata</div>
         <div class="level-desc">La reconversión activa es la ruta. El sistema te da un primer paso concreto para esta semana — no para el año que viene.</div>
       </div>
+    </div>
+    <div class="levels-cta">
+      <p>Descubre el tuyo. La conversación dura menos de 10 minutos.</p>
+      <button class="btn-cta modal-trigger">Hacer mi diagnóstico →</button>
     </div>
   </div>
 </div>
@@ -405,7 +413,7 @@
 </div>
 
 <footer>
-  <div><img src="nexo_logo_transparente_blanco.png" alt="nexo" style="height:80px;opacity:0.8;"></div>
+  <div><img src="nexo_logo_transparente_blanco.png" alt="nexo" style="height:40px;opacity:0.8;"></div>
   <p>MIB AIEx · Equipo 3 · Junio 2026</p>
   <p>Diagnóstico IA · Reskilling personalizado · Acompañamiento semanal</p>
 </footer>
