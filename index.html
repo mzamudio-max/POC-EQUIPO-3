@@ -418,18 +418,6 @@
   <p>Diagnóstico IA · Reskilling personalizado · Acompañamiento semanal</p>
 </footer>
 
-<!-- Modal -->
-<div class="nexo-modal-overlay" id="nexo-modal-overlay" role="dialog" aria-modal="true">
-  <div class="nexo-modal">
-    <div class="nexo-modal-header">
-      <div class="nexo-modal-header-left">
-        <span class="nexo-modal-pill">Diagnóstico</span>
-        <span class="nexo-modal-title">Informe de desarrollo profesional</span>
-      </div>
-      <button class="nexo-modal-close" id="nexo-modal-close" aria-label="Cerrar">&times;</button>
-    </div>
-<iframe id="nexo-form-iframe" src="" data-src="https://equipo3aiexisdi.app.n8n.cloud/form/informe-desarrollo-profesional" title="Diagnóstico — Informe de desarrollo profesional" loading="lazy"></iframe>
-</div>
 <script>
   const overlay = document.getElementById('nexo-modal-overlay');
   const iframe  = document.getElementById('nexo-form-iframe');
@@ -453,6 +441,29 @@
   document.getElementById('nexo-modal-close').addEventListener('click', closeModal);
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Scroll suave para nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const el = document.querySelector(id);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+<script>
+  const NEXO_FORM_URL = "https://equipo3aiexisdi.app.n8n.cloud/form/informe-desarrollo-profesional";
+
+  function openNexoForm(e) {
+    e.preventDefault();
+    window.open(NEXO_FORM_URL, '_blank', 'noopener,noreferrer');
+  }
+
+  // Todos los botones que antes abrían el modal, ahora abren el form en pestaña nueva
+  document.querySelectorAll('.modal-trigger, #btn-hero, #btn-nav').forEach(el => {
+    el.addEventListener('click', openNexoForm);
+  });
 
   // Scroll suave para nav
   document.querySelectorAll('a[href^="#"]').forEach(a => {
