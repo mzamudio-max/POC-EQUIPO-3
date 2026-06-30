@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El diagnóstico — nexo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  :root {
+    --nexo-night: #1a1625;
+    --nexo-violet: #6B4FBB;
+    --nexo-violet-light: #8B6FD4;
+    --nexo-lavender: #C4B8E8;
+    --nexo-soft: #2D2540;
+    --nexo-near-white: #F5F3FF;
+    --nexo-text: #E8E4F5;
+    --nexo-muted: #9B92B8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--nexo-night); color: var(--nexo-text); line-height: 1.6; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; border-bottom: 0.5px solid rgba(196,184,232,0.15); }
+  nav ul { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+  nav ul li a { color: var(--nexo-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--nexo-lavender); }
+  .nav-cta { background: var(--nexo-violet) !important; color: var(--nexo-near-white) !important; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 500 !important; }
+  .nav-active { color: var(--nexo-lavender) !important; }
+
+  .btn-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--nexo-violet); color: white; padding: 0.9rem 2rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 500; cursor: pointer; border: none; transition: background 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-cta:hover { background: var(--nexo-violet-light); }
+
+  /* HERO */
+  .diag-hero { padding: 6rem 4rem 4rem; max-width: 820px; margin: 0 auto; }
+  .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--nexo-muted); font-size: 0.82rem; text-decoration: none; margin-bottom: 2.5rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--nexo-lavender); }
+  .diag-tag { display: inline-block; background: rgba(107,79,187,0.2); border: 0.5px solid rgba(107,79,187,0.5); color: var(--nexo-lavender); font-size: 0.75rem; padding: 0.3rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+  .diag-hero h1 { font-size: 3rem; font-weight: 300; line-height: 1.15; letter-spacing: -0.03em; color: var(--nexo-near-white); margin-bottom: 1.25rem; }
+  .diag-hero h1 em { font-style: normal; color: var(--nexo-violet-light); }
+  .diag-hero p { font-size: 1.05rem; color: var(--nexo-muted); max-width: 560px; font-weight: 300; line-height: 1.7; }
+
+  /* QUÉ EVALUAMOS */
+  .eval-section { padding: 4rem; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--nexo-violet-light); text-transform: uppercase; margin-bottom: 1rem; }
+  .section-title { font-size: 1.8rem; font-weight: 300; color: var(--nexo-near-white); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .section-sub { color: var(--nexo-muted); font-size: 0.95rem; margin-bottom: 3rem; max-width: 520px; line-height: 1.6; }
+  .eval-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .eval-card { background: var(--nexo-soft); border: 0.5px solid rgba(196,184,232,0.12); border-radius: 14px; padding: 2rem; transition: border-color 0.2s; }
+  .eval-card:hover { border-color: rgba(107,79,187,0.35); }
+  .eval-card.primary { border-left: 2px solid var(--nexo-violet); }
+  .eval-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+  .eval-title { font-size: 1.05rem; font-weight: 500; color: var(--nexo-near-white); margin-bottom: 0.5rem; }
+  .eval-desc { font-size: 0.85rem; color: var(--nexo-muted); line-height: 1.7; }
+  .eval-detail { font-size: 0.78rem; color: rgba(155,146,184,0.6); margin-top: 0.75rem; font-style: italic; }
+
+  /* NIVELES */
+  .levels-section { padding: 4rem; background: var(--nexo-soft); border-top: 0.5px solid rgba(196,184,232,0.1); border-bottom: 0.5px solid rgba(196,184,232,0.1); }
+  .levels-inner { max-width: 1100px; margin: 0 auto; }
+  .levels-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 2.5rem; }
+  .level-card { background: var(--nexo-night); border-radius: 12px; padding: 1.5rem; border-top: 3px solid; }
+  .level-card.low { border-color: #4ade80; }
+  .level-card.med { border-color: #facc15; }
+  .level-card.high { border-color: #fb923c; }
+  .level-card.urgent { border-color: #f87171; }
+  .level-range { font-size: 1.6rem; font-weight: 300; color: var(--nexo-near-white); letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+  .level-label { font-size: 0.8rem; font-weight: 500; color: var(--nexo-near-white); margin-bottom: 0.5rem; }
+  .level-desc { font-size: 0.78rem; color: var(--nexo-muted); line-height: 1.5; }
+
+  /* OUTPUT */
+  .output-section { padding: 5rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .output-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+  .output-card { border: 0.5px solid rgba(196,184,232,0.12); border-radius: 12px; padding: 1.5rem; }
+  .output-num { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nexo-violet-light); margin-bottom: 0.75rem; }
+  .output-title { font-size: 0.95rem; font-weight: 500; color: var(--nexo-near-white); margin-bottom: 0.5rem; }
+  .output-desc { font-size: 0.82rem; color: var(--nexo-muted); line-height: 1.6; }
+
+  /* CTA FINAL */
+  .diag-cta { text-align: center; padding: 6rem 4rem; }
+  .diag-cta h2 { font-size: 2.2rem; font-weight: 300; color: var(--nexo-near-white); letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.2; }
+  .diag-cta p { color: var(--nexo-muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .diag-cta-sub { display: block; margin-top: 1rem; font-size: 0.78rem; color: var(--nexo-muted); }
+
+  footer { border-top: 0.5px solid rgba(196,184,232,0.1); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 0.8rem; color: var(--nexo-muted); }
+
+  /* MODAL */
+  .nexo-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,22,37,0.85); backdrop-filter: blur(6px); z-index: 9999; align-items: center; justify-content: center; }
+  .nexo-modal-overlay.open { display: flex; }
+  .nexo-modal { background: var(--nexo-soft); border: 0.5px solid rgba(196,184,232,0.2); border-radius: 16px; width: min(720px, 95vw); height: min(680px, 90vh); display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.5); animation: modalIn 0.25s ease; }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(16px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .nexo-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 0.5px solid rgba(196,184,232,0.12); flex-shrink: 0; }
+  .nexo-modal-header-left { display: flex; align-items: center; gap: 0.75rem; }
+  .nexo-modal-pill { background: rgba(107,79,187,0.25); border: 0.5px solid rgba(107,79,187,0.4); color: var(--nexo-lavender); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px; }
+  .nexo-modal-title { font-size: 0.9rem; font-weight: 500; color: var(--nexo-near-white); }
+  .nexo-modal-close { background: none; border: none; color: var(--nexo-muted); cursor: pointer; font-size: 1.4rem; line-height: 1; padding: 0.25rem 0.5rem; border-radius: 6px; transition: color 0.2s; }
+  .nexo-modal-close:hover { color: var(--nexo-near-white); }
+  .nexo-modal iframe { flex: 1; width: 100%; border: none; background: var(--nexo-night); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html"><img src="nexo_logo_transparente_blanco.png" alt="nexo" style="height:72px;"></a></div>
+  <ul>
+    <li><a href="diagnostico.html" class="nav-active">Diagnóstico</a></li>
+    <li><a href="index.html#planes">Planes</a></li>
+    <li><a href="#" class="nav-cta" id="btn-nav">Activar nexo</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="diag-hero">
+  <a href="index.html" class="back-link">← Volver al inicio</a>
+  <div class="diag-tag">Diagnóstico IA · Basado en datos académicos</div>
+  <h1>Un número que te dice algo <em>útil</em>.<br>No uno que te deja igual de perdido.</h1>
+  <p>La mayoría de herramientas de "riesgo laboral" usan una sola fuente — o ninguna citable. Nexo cruza cuatro dimensiones de tu perfil real para darte un diagnóstico honesto y un plan accionable.</p>
+</div>
+
+<!-- QUÉ EVALUAMOS -->
+<div class="eval-section">
+  <div class="section-label">Qué evaluamos</div>
+  <h2 class="section-title">Cuatro dimensiones. Un diagnóstico completo.</h2>
+  <p class="section-sub">Ninguna dimensión sola dice la verdad. La combinación de las cuatro sí.</p>
+  <div class="eval-grid">
+    <div class="eval-card primary">
+      <div class="eval-icon">🔍</div>
+      <div class="eval-title">Exposición técnica de tus tareas</div>
+      <div class="eval-desc">Analizamos qué proporción de lo que haces cada día puede ser completado por la IA hoy, sin asistencia adicional. No es una opinión — es el resultado de evaluar miles de tareas laborales frente a modelos de lenguaje avanzados.</div>
+      <div class="eval-detail">La dimensión con mayor peso en tu score. El núcleo del diagnóstico.</div>
+    </div>
+    <div class="eval-card">
+      <div class="eval-icon">📊</div>
+      <div class="eval-title">Velocidad de adopción en tu sector</div>
+      <div class="eval-desc">No todos los sectores cambian al mismo ritmo. Evaluamos qué tan rápido está adoptando la IA tu industria concreta — finanzas, logística, educación, salud — y qué implica eso para tu horizonte de tiempo.</div>
+      <div class="eval-detail">Basado en datos de adopción por sector de informes globales recientes.</div>
+    </div>
+    <div class="eval-card">
+      <div class="eval-icon">🛡️</div>
+      <div class="eval-title">Tus factores protectores</div>
+      <div class="eval-desc">Lo que ningún dataset puede saber: si llevas 15 años en tu área, si gestionas un equipo, si ya usas IA en tu trabajo. Estos factores reducen el riesgo real aunque tus tareas tengan alta exposición. La conversación los captura.</div>
+      <div class="eval-detail">El factor diferencial. Solo tú lo sabes. Nosotros lo medimos.</div>
+    </div>
+    <div class="eval-card">
+      <div class="eval-icon">⚡</div>
+      <div class="eval-title">Velocidad de cambio en tu entorno</div>
+      <div class="eval-desc">¿Tu empresa ya está adoptando IA? ¿Tu sector está en plena transformación o apenas empieza? El ritmo al que llegará el cambio a tu entorno concreto determina tu margen de tiempo para actuar.</div>
+      <div class="eval-detail">Cruzado con el tamaño y tipo de empresa que declaras en la conversación.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NIVELES -->
+<div class="levels-section">
+  <div class="levels-inner">
+    <div class="section-label">Tu resultado</div>
+    <h2 class="section-title">Cuatro niveles. Uno es el tuyo.</h2>
+    <p class="section-sub" style="margin-bottom:0">El score va de 0 a 100. Cada nivel tiene un plan de acción diferente.</p>
+    <div class="levels-grid">
+      <div class="level-card low">
+        <div class="level-range">0–30</div>
+        <div class="level-label">Perfil resiliente</div>
+        <div class="level-desc">Tu rol tiene alta resistencia a la automatización. El plan se enfoca en potenciar lo que ya funciona con IA como herramienta.</div>
+      </div>
+      <div class="level-card med">
+        <div class="level-range">31–60</div>
+        <div class="level-label">Adaptación recomendada</div>
+        <div class="level-desc">Zona de transición. Algunas tareas tienen exposición media. El reskilling selectivo en skills complementarias te mantiene adelante.</div>
+      </div>
+      <div class="level-card high">
+        <div class="level-range">61–80</div>
+        <div class="level-label">Transición urgente</div>
+        <div class="level-desc">Parte importante de tu trabajo tiene alta exposición. Un plan estructurado de reskilling en 30–45 días marca la diferencia.</div>
+      </div>
+      <div class="level-card urgent">
+        <div class="level-range">81–100</div>
+        <div class="level-label">Acción inmediata</div>
+        <div class="level-desc">La reconversión activa es la ruta. El sistema te da un primer paso concreto para esta semana — no para el año que viene.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUÉ RECIBES -->
+<div class="output-section">
+  <div class="section-label">Qué recibes</div>
+  <h2 class="section-title">No un número. Un plan.</h2>
+  <p class="section-sub">El diagnóstico sin ruta genera ansiedad. La ruta sin diagnóstico es genérica e inútil. Solo la combinación tiene valor.</p>
+  <div class="output-grid">
+    <div class="output-card">
+      <div class="output-num">Output 01</div>
+      <div class="output-title">Tu score de riesgo</div>
+      <div class="output-desc">Índice 0–100 con nivel, etiqueta de urgencia y explicación clara de por qué ese número para tu perfil concreto.</div>
+    </div>
+    <div class="output-card">
+      <div class="output-num">Output 02</div>
+      <div class="output-title">Mapa de habilidades</div>
+      <div class="output-desc">Qué tareas están en riesgo, cuáles son transferibles y cuáles puedes potenciar con IA para convertirlas en ventaja.</div>
+    </div>
+    <div class="output-card">
+      <div class="output-num">Output 03</div>
+      <div class="output-title">Plan accionable</div>
+      <div class="output-desc">Ruta de reskilling por fases, calibrada a las horas que tienes disponibles. Con un primer paso concreto para esta semana.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="diag-cta">
+  <h2>Descubre dónde estás.<br>Esta semana.</h2>
+  <p>El diagnóstico es gratuito. La conversación dura menos de 10 minutos.</p>
+  <button class="btn-cta" id="btn-diag">Hacer mi diagnóstico →</button>
+  <span class="diag-cta-sub">Sin tarjeta. Sin alarmismo. Con un plan concreto.</span>
+</div>
+
+<footer>
+  <div><img src="nexo_logo_transparente_blanco.png" alt="nexo" style="height:40px;opacity:0.8;"></div>
+  <p>MIB AIEx · Equipo 3 · Junio 2026</p>
+  <p>Diagnóstico IA · Reskilling personalizado · Acompañamiento semanal</p>
+</footer>
+
+<!-- Modal -->
+<div class="nexo-modal-overlay" id="nexo-modal-overlay" role="dialog" aria-modal="true">
+  <div class="nexo-modal">
+    <div class="nexo-modal-header">
+      <div class="nexo-modal-header-left">
+        <span class="nexo-modal-pill">Diagnóstico</span>
+        <span class="nexo-modal-title">Informe de desarrollo profesional</span>
+      </div>
+      <button class="nexo-modal-close" id="nexo-modal-close" aria-label="Cerrar">&times;</button>
+    </div>
+    <iframe id="nexo-form-iframe" src="" data-src="https://equipo3aiexisdi.app.n8n.cloud/form-test/informe-desarrollo-profesional" title="Formulario de diagnóstico Nexo" loading="lazy"></iframe>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('nexo-modal-overlay');
+  const iframe  = document.getElementById('nexo-form-iframe');
+  function openModal() {
+    if (!iframe.src || iframe.src === window.location.href) iframe.src = iframe.dataset.src;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('btn-diag').addEventListener('click', openModal);
+  document.getElementById('btn-nav').addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+  document.getElementById('nexo-modal-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
