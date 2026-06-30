@@ -50,24 +50,18 @@
   .stat-label { font-size: 0.8rem; color: var(--nexo-muted); margin-top: 0.25rem; max-width: 160px; line-height: 1.4; }
 
   /* PROCESO */
-  .process-section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .process-section { padding: 6rem 4rem; background: var(--nexo-soft); border-top: 0.5px solid rgba(196,184,232,0.1); border-bottom: 0.5px solid rgba(196,184,232,0.1); }
+  .process-inner { max-width: 1100px; margin: 0 auto; }
   .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
-  .process-card { background: var(--nexo-soft); border: 0.5px solid rgba(196,184,232,0.12); border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s; }
+  .process-card { background: var(--nexo-night); border: 0.5px solid rgba(196,184,232,0.12); border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s; }
   .process-card:hover { border-color: rgba(107,79,187,0.4); }
   .process-card.first { border-top: 2px solid var(--nexo-violet); }
   .process-num { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nexo-violet-light); margin-bottom: 0.75rem; }
   .process-name { font-size: 1rem; font-weight: 600; color: var(--nexo-near-white); margin-bottom: 0.25rem; }
   .process-role { font-size: 0.75rem; color: var(--nexo-violet-light); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
   .process-desc { font-size: 0.85rem; color: var(--nexo-muted); line-height: 1.6; border-left: 2px solid rgba(107,79,187,0.3); padding-left: 0.75rem; }
-
-  /* CÓMO FUNCIONA */
-  .how-section { padding: 6rem 4rem; background: var(--nexo-soft); border-top: 0.5px solid rgba(196,184,232,0.1); }
-  .how-inner { max-width: 1100px; margin: 0 auto; }
-  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
-  .step { padding: 2rem; border: 0.5px solid rgba(196,184,232,0.12); border-radius: 12px; background: var(--nexo-night); }
-  .step-num { font-size: 2rem; font-weight: 600; color: rgba(107,79,187,0.3); margin-bottom: 1rem; }
-  .step-title { font-size: 1rem; font-weight: 500; color: var(--nexo-near-white); margin-bottom: 0.5rem; }
-  .step-desc { font-size: 0.85rem; color: var(--nexo-muted); line-height: 1.6; }
+  .process-cta { text-align: center; margin-top: 3rem; }
+  .process-cta p { font-size: 0.85rem; color: var(--nexo-muted); margin-bottom: 1.25rem; }
 
   /* DIAGNÓSTICO — qué evaluamos */
   .diag-section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
@@ -154,6 +148,7 @@
 <nav>
   <div class="logo"><img src="nexo_logo_transparente_blanco.png" alt="nexo" style="height:72px;"></div>
   <ul>
+    <li><a href="#proceso">Tu proceso</a></li>
     <li><a href="#diagnostico">Diagnóstico</a></li>
     <li><a href="#planes">Planes</a></li>
     <li><a href="#" class="nav-cta" id="btn-nav">Activar nexo</a></li>
@@ -192,34 +187,40 @@
 </div>
 
 <!-- EL PROCESO -->
-<div class="process-section">
-  <div class="section-label">El proceso</div>
-  <h2 class="section-title">Cuatro fases. Un plan concreto para esta semana.</h2>
-  <p class="section-sub">No es un test genérico. Es un diagnóstico que se construye contigo, paso a paso.</p>
-  <div class="process-grid">
-    <div class="process-card first">
-      <div class="process-num">Fase 01</div>
-      <div class="process-name">Diagnóstico de riesgo</div>
-      <div class="process-role">Exposición + Contexto personal</div>
-      <div class="process-desc">"Tu índice es 68/100. Hay tres cosas que puedes hacer esta semana."</div>
+<div class="process-section" id="proceso">
+  <div class="process-inner">
+    <div class="section-label">El proceso</div>
+    <h2 class="section-title">Cuatro fases. Un plan concreto para esta semana.</h2>
+    <p class="section-sub">No es un test genérico. Es un diagnóstico que se construye contigo, paso a paso.</p>
+    <div class="process-grid">
+      <div class="process-card first">
+        <div class="process-num">Fase 01</div>
+        <div class="process-name">Diagnóstico de riesgo</div>
+        <div class="process-role">Exposición + Contexto personal</div>
+        <div class="process-desc">"Tu índice es 68/100. Hay tres cosas que puedes hacer esta semana."</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">Fase 02</div>
+        <div class="process-name">Itinerario de reskilling</div>
+        <div class="process-role">Plan personalizado por fases</div>
+        <div class="process-desc">"La primera habilidad no es programar — es auditar con IA."</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">Fase 03</div>
+        <div class="process-name">Seguimiento semanal</div>
+        <div class="process-role">Evolución y ajuste continuo</div>
+        <div class="process-desc">"60% del tramo 1. Esta semana cruzas."</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">Fase 04</div>
+        <div class="process-name">Análisis de tendencias</div>
+        <div class="process-role">Tu sector, en tiempo real</div>
+        <div class="process-desc">"Los perfiles híbridos tienen 34% más ofertas este trimestre."</div>
+      </div>
     </div>
-    <div class="process-card">
-      <div class="process-num">Fase 02</div>
-      <div class="process-name">Itinerario de reskilling</div>
-      <div class="process-role">Plan personalizado por fases</div>
-      <div class="process-desc">"La primera habilidad no es programar — es auditar con IA."</div>
-    </div>
-    <div class="process-card">
-      <div class="process-num">Fase 03</div>
-      <div class="process-name">Seguimiento semanal</div>
-      <div class="process-role">Evolución y ajuste continuo</div>
-      <div class="process-desc">"60% del tramo 1. Esta semana cruzas."</div>
-    </div>
-    <div class="process-card">
-      <div class="process-num">Fase 04</div>
-      <div class="process-name">Análisis de tendencias</div>
-      <div class="process-role">Tu sector, en tiempo real</div>
-      <div class="process-desc">"Los perfiles híbridos tienen 34% más ofertas este trimestre."</div>
+    <div class="process-cta">
+      <p>Conoce el detalle de cada fase y empieza por la primera.</p>
+      <button class="btn-cta modal-trigger">Iniciar mi diagnóstico →</button>
     </div>
   </div>
 </div>
@@ -254,6 +255,10 @@
       <div class="eval-desc">¿Tu empresa ya está adoptando IA? ¿Tu sector está en plena transformación o apenas empieza? El ritmo al que llegará el cambio a tu entorno concreto determina tu margen de tiempo para actuar.</div>
       <div class="eval-detail">Cruzado con el tipo y tamaño de empresa que declaras en la conversación.</div>
     </div>
+  </div>
+  <div class="process-cta">
+    <p>Cuatro dimensiones. Un solo resultado: el tuyo.</p>
+    <button class="btn-cta modal-trigger">Quiero ver mi diagnóstico →</button>
   </div>
 </div>
 
